@@ -122,20 +122,16 @@ function expressionCalculator(expr) {
     throw Error('ExpressionError: Brackets must be paired');
   }
   expr = toArray(expr);
-  console.log(expr);
   expr = convert(expr); 
-  console.log(expr);
   for(let i = 0; i < expr.length; i++) {
     if (expr[i] in OPERATIONS) {
-      expr[i-2] = OPERATIONS[expr[i]](expr[i - 2], expr[i - 1]);
+      expr[i - 2] = OPERATIONS[expr[i]](expr[i - 2], expr[i - 1]);
       expr.splice(i - 1, 2);
-      i-=2; 
+      i-= 2; 
     }
   }
-  console.log(expr);
   return expr[0];
 }
-
 
 module.exports = {
   expressionCalculator
